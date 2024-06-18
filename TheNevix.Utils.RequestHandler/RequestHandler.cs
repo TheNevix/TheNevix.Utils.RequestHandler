@@ -16,7 +16,7 @@ namespace TheNevix.Utils.RequestHandler
         }
 
         /// <summary>
-        /// Function to make a Get api call. Possible to add optional headers.
+        /// Function to make a GET request. Possible to add optional headers.
         /// </summary>
         /// <param name="url">The endpoint url.</param>
         /// <param name="options">Optional header parameters.</param>
@@ -33,7 +33,7 @@ namespace TheNevix.Utils.RequestHandler
                 {
                     foreach (var header in options.Headers)
                     {
-                        content.Headers.Add(header.Key, header.Value);
+                        request.Headers.Add(header.Key, header.Value);
                     }
                 }
 
@@ -45,7 +45,7 @@ namespace TheNevix.Utils.RequestHandler
             catch (Exception ex)
             {
                 // Handle exceptions (e.g., log them)
-                throw new ApplicationException($"Error calling API: {ex.Message}", ex);
+                throw new ApplicationException($"Error making GET request to {url}: {ex.Message}", ex);
             }
         }
 
@@ -82,7 +82,81 @@ namespace TheNevix.Utils.RequestHandler
             catch (Exception ex)
             {
                 // Handle exceptions (e.g., log them)
-                throw new ApplicationException($"Error calling API: {ex.Message}", ex);
+                throw new ApplicationException($"Error making POST request to {url}: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Function to make a Patch api call. Possible to add optional headers.
+        /// </summary>
+        /// <param name="url">The endpoint url.</param>
+        /// <param name="body">The body object of a POST request</param>
+        /// <returns>A string with the result.</returns>
+        /// <exception cref="ApplicationException"></exception>
+        public async Task<string> PatchAsync<T>(string url, T body, RequestHandlerOptions options = null)
+        {
+            try
+            {
+                // Serialize the body object to JSON
+                string jsonBody = JsonConvert.SerializeObject(body);
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                // Add headers if provided
+                if (options?.Headers != null)
+                {
+                    foreach (var header in options.Headers)
+                    {
+                        content.Headers.Add(header.Key, header.Value);
+                    }
+                }
+
+                // Make the PATCH request
+                HttpResponseMessage response = await _httpClient.PatchAsync(url, content);
+                response.EnsureSuccessStatusCode();
+                string responseData = await response.Content.ReadAsStringAsync();
+                return responseData;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log them)
+                throw new ApplicationException($"Error making PATCH request to {url}: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Function to make a Put api call. Possible to add optional headers.
+        /// </summary>
+        /// <param name="url">The endpoint url.</param>
+        /// <param name="body">The body object of a POST request</param>
+        /// <returns>A string with the result.</returns>
+        /// <exception cref="ApplicationException"></exception>
+        public async Task<string> PutAsync<T>(string url, T body, RequestHandlerOptions options = null)
+        {
+            try
+            {
+                // Serialize the body object to JSON
+                string jsonBody = JsonConvert.SerializeObject(body);
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                // Add headers if provided
+                if (options?.Headers != null)
+                {
+                    foreach (var header in options.Headers)
+                    {
+                        content.Headers.Add(header.Key, header.Value);
+                    }
+                }
+
+                // Make the PUT request
+                HttpResponseMessage response = await _httpClient.PutAsync(url, content);
+                response.EnsureSuccessStatusCode();
+                string responseData = await response.Content.ReadAsStringAsync();
+                return responseData;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log them)
+                throw new ApplicationException($"Error making PUT request to {url}: {ex.Message}", ex);
             }
         }
     }
