@@ -15,6 +15,16 @@ namespace TheNevix.Utils
         Task<string> GetAsync(string url, RequestHandlerOptions options = null);
 
         /// <summary>
+        /// Sends an asynchronous HEAD request to the specified URL.
+        /// Allows optional headers to be included in the request.
+        /// </summary>
+        /// <param name="url">The endpoint URL to which the HEAD request is sent.</param>
+        /// <param name="options">Optional parameters for adding headers to the request. If no headers are specified, default headers will be used.</param>
+        /// <returns>A task that represents the asynchronous HEAD operation. The task result contains the response as a string.</returns>
+        /// <exception cref="ApplicationException">Thrown when an error occurs while making the HEAD request.</exception>
+        Task<HttpResponseMessage> HeadAsync(string url, RequestHandlerOptions options = null);
+
+        /// <summary>
         /// Sends an asynchronous POST request to the specified URL with the provided body.
         /// Allows optional headers to be included in the request.
         /// </summary>

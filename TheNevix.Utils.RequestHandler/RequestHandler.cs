@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using System.Reflection.PortableExecutable;
 using System.Text;
 using TheNevix.Utils.RequestHandler.Options;
 
 namespace TheNevix.Utils.RequestHandler
 {
-
     public class RequestHandler : IRequestHandler
     {
         private readonly HttpClient _httpClient;
@@ -46,6 +44,39 @@ namespace TheNevix.Utils.RequestHandler
             {
                 // Handle exceptions (e.g., log them)
                 throw new ApplicationException($"Error making GET request to {url}: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Function to make a HEAD request. Possible to add optional headers.
+        /// </summary>
+        /// <param name="url">The endpoint url.</param>
+        /// <param name="options">Optional header parameters.</param>
+        /// <returns>A HttpResponseMessage with the result.</returns>
+        /// <exception cref="ApplicationException"></exception>
+        public async Task<HttpResponseMessage> HeadAsync(string url, RequestHandlerOptions options = null)
+        {
+            try
+            {
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, url);
+
+                // Add headers if provided
+                if (options?.Headers != null)
+                {
+                    foreach (var header in options.Headers)
+                    {
+                        request.Headers.Add(header.Key, header.Value);
+                    }
+                }
+
+                HttpResponseMessage response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log them)
+                throw new ApplicationException($"Error making HEAD request to {url}: {ex.Message}", ex);
             }
         }
 
