@@ -1,11 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.1.1</Version>
+    <Version>1.0.0</Version>
+    <Title>TheNevix.Utils.RequestHandler</Title>
+    <Authors>TheNevix</Authors>
+    <Company>TheNevix</Company>
+    <PackageTags>Api call; api calls; network requests; api calls manager; api call client</PackageTags>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <Description>A simple NuGet package to easily manage api calls in your project.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
