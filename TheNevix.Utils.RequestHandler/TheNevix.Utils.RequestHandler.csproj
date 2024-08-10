@@ -11,15 +11,24 @@
     <Company>TheNevix</Company>
     <PackageTags>Api call; api calls; network requests; api calls manager; api call client</PackageTags>
     <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
-    <Description>A simple NuGet package to easily manage api calls in your project.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<Description>A simple and flexible NuGet package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, and error handling. Compatible with .NET 6.0 to .NET 8.0.</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
