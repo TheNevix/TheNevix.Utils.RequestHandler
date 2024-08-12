@@ -1,9 +1,13 @@
-﻿using TheNevix.Utils.RequestHandler.Options;
+﻿using TheNevix.Utils.RequestHandler.Builders;
+using TheNevix.Utils.RequestHandler.Options;
 
 namespace TheNevix.Utils
 {
     public interface IRequestHandler
     {
+
+        public RequestBuilder CreateRequest(string url);
+
         /// <summary>
         /// Sends an asynchronous GET request to the specified URL.
         /// Allows optional headers to be included in the request.

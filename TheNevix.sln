@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheNevix.Utils.RequestHandl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{0C9405CA-8A46-4925-B14E-BB17ED95DE07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheNevix.Testing", "TheNevix.Testing\TheNevix.Testing.csproj", "{4B752D12-C2CF-4051-AFFA-935956CB4A19}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,10 +17,6 @@ Global
 		{C9FCAE11-840A-41AE-9AE9-EC233BBCFFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FCAE11-840A-41AE-9AE9-EC233BBCFFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FCAE11-840A-41AE-9AE9-EC233BBCFFDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B752D12-C2CF-4051-AFFA-935956CB4A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B752D12-C2CF-4051-AFFA-935956CB4A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B752D12-C2CF-4051-AFFA-935956CB4A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B752D12-C2CF-4051-AFFA-935956CB4A19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

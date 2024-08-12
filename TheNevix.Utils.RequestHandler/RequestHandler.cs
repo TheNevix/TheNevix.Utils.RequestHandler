@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
+using TheNevix.Utils.RequestHandler.Builders;
 using TheNevix.Utils.RequestHandler.Options;
 
 namespace TheNevix.Utils.RequestHandler
@@ -11,6 +12,16 @@ namespace TheNevix.Utils.RequestHandler
         public RequestHandler(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        public RequestBuilder CreateRequest(string url)
+        {
+            return new RequestBuilder(this, url);
+        }
+
+        internal async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        {
+            return await _httpClient.SendAsync(request);
         }
 
         /// <summary>
