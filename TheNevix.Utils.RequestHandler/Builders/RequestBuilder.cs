@@ -11,7 +11,7 @@ namespace TheNevix.Utils.RequestHandler.Builders
         public RequestBuilder(RequestHandler requestHandler, string url)
         {
             _requestHandler = requestHandler;
-            _requestMessage = new HttpRequestMessage(HttpMethod.Get, url); // Default to GET; can be modified
+            _requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         }
 
         public RequestBuilder AddHeader(string name, string value)
@@ -20,7 +20,7 @@ namespace TheNevix.Utils.RequestHandler.Builders
             return this;
         }
 
-        public RequestBuilder WithRequestBodyl<TModel>(TModel model)
+        public RequestBuilder WithRequestBody<TModel>(TModel model)
         {
             _requestMessage.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             return this;
