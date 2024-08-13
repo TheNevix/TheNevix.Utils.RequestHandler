@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace TheNevix.Utils.Configurations
+namespace TheNevix.Utils.RequestHandler.Configurations
 {
     public static class ServiceCollectionExtensions
     {
@@ -11,7 +11,8 @@ namespace TheNevix.Utils.Configurations
         /// <returns></returns>
         public static IServiceCollection AddRequestHandlerServices(this IServiceCollection services)
         {
-            services.AddHttpClient<IRequestHandler, RequestHandler.RequestHandler>();
+            services.AddHttpClient<IRequestHandler, RequestHandler>();
+            services.AddHttpClient<IRequestBuilder, RequestBuilder>();
             return services;
         }
     }

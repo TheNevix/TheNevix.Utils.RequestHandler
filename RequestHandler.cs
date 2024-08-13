@@ -1,6 +1,4 @@
-﻿using TheNevix.Utils.RequestHandler.Builders;
-
-namespace TheNevix.Utils.RequestHandler
+﻿namespace TheNevix.Utils.RequestHandler
 {
     public class RequestHandler : IRequestHandler
     {
