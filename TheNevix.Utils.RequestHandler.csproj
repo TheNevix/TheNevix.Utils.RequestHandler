@@ -5,12 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0-beta-240813</Version>
+    <Version>1.1.0</Version>
     <Title>TheNevix.Utils.RequestHandler</Title>
     <Authors>TheNevix</Authors>
     <Company>TheNevix</Company>
-    <PackageTags>Api call; api calls; network requests; api calls manager; api call client</PackageTags>
-    <PackageReleaseNotes>Beta version of 1.1.0.</PackageReleaseNotes>
+    <PackageTags>Apicall; apicalls; networkrequests; apicallsmanager; apicallclient</PackageTags>
+    <PackageReleaseNotes>Switched to a builder. Make your HTTP request using method chaining.</PackageReleaseNotes>
 	<Description>A simple and flexible NuGet package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, and error handling. Compatible with .NET 6.0 to .NET 8.0.</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -18,6 +18,9 @@
   
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
   <IncludeXmlDocumentation>true</IncludeXmlDocumentation>
+  <PackageIcon>Logo.png</PackageIcon>
+  <RepositoryUrl>https://github.com/TheNevix/TheNevix.Utils.RequestHandler</RepositoryUrl>
+  <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -45,6 +48,13 @@
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
