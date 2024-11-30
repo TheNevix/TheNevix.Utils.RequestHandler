@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
+using TheNevix.Utils.RequestHandler.Settings;
 
 namespace TheNevix.Utils.RequestHandler
 {
@@ -29,7 +30,7 @@ namespace TheNevix.Utils.RequestHandler
 
 
         /// <summary>
-        /// Adds a request body to the HTTP request.
+        /// Adds a request body to the HTTP request as StringContent.
         /// </summary>
         /// <typeparam name="TModel">The type of the request body model.</typeparam>
         /// <param name="model">The model to be serialized and added as the request body.</param>
@@ -37,6 +38,17 @@ namespace TheNevix.Utils.RequestHandler
         public IRequestBuilder WithRequestBody<TModel>(TModel model)
         {
             _requestMessage.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a request body to the HTTP request as FormUrlEncodedContent.
+        /// </summary>
+        /// <param name="model">The model to be serialized and added as the request body.</param>
+        /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
+        public IRequestBuilder WithRequestBody(IEnumerable<KeyValuePair<string, string>> model)
+        {
+            _requestMessage.Content = new FormUrlEncodedContent(model);
             return this;
         }
 
