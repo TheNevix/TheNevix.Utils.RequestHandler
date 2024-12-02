@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
-using TheNevix.Utils.RequestHandler.Settings;
+using TheNevix.Utils.RequestHandler.Models;
 
 namespace TheNevix.Utils.RequestHandler
 {
@@ -9,6 +9,8 @@ namespace TheNevix.Utils.RequestHandler
     {
         private readonly RequestHandler _requestHandler;
         private readonly HttpRequestMessage _requestMessage;
+        
+        RequestOptions options = null;
 
         public RequestBuilder(RequestHandler requestHandler, string url)
         {
@@ -65,6 +67,17 @@ namespace TheNevix.Utils.RequestHandler
         }
 
         /// <summary>
+        /// Sets RequestOptions with provided options
+        /// </summary>
+        /// <param name="requestOptions">THe options for the request</param>
+        /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
+        public IRequestBuilder WithOptions(RequestOptions requestOptions)
+        {
+            options = requestOptions;
+            return this;
+        }
+
+        /// <summary>
         /// Executes the HTTP request and deserializes the response into the specified type.
         /// </summary>
         /// <typeparam name="TResponse">The type to which the response should be deserialized.</typeparam>
@@ -74,6 +87,19 @@ namespace TheNevix.Utils.RequestHandler
             var response = await _requestHandler.SendAsync(_requestMessage);
             response.EnsureSuccessStatusCode();
             var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            if (options is not null && options.ResponseDeserialization is not null)
+            {
+                if (options.ResponseDeserialization == Models.Enums.ResponseDeserialization.System)
+                {
+                    return JsonConvert.DeserializeObject<TResponse>(jsonResponse);
+                }
+                else if (options.ResponseDeserialization == Models.Enums.ResponseDeserialization.NewtonSoft)
+                {
+                    return System.Text.Json.JsonSerializer.Deserialize<TResponse>(jsonResponse);
+                }
+            }
+
             return JsonConvert.DeserializeObject<TResponse>(jsonResponse);
         }
 
