@@ -92,11 +92,11 @@ namespace TheNevix.Utils.RequestHandler
             {
                 if (options.ResponseDeserialization == Models.Enums.ResponseDeserialization.System)
                 {
-                    return JsonConvert.DeserializeObject<TResponse>(jsonResponse);
+                    return System.Text.Json.JsonSerializer.Deserialize<TResponse>(jsonResponse);
                 }
                 else if (options.ResponseDeserialization == Models.Enums.ResponseDeserialization.NewtonSoft)
                 {
-                    return System.Text.Json.JsonSerializer.Deserialize<TResponse>(jsonResponse);
+                    return JsonConvert.DeserializeObject<TResponse>(jsonResponse);
                 }
             }
 

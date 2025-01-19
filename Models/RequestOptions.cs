@@ -11,5 +11,10 @@ namespace TheNevix.Utils.RequestHandler.Models
         /// Can either be standard system deserialization of newtonsoft deserialization.
         /// </summary>
         public ResponseDeserialization? ResponseDeserialization { get; set; }
+
+        /// <summary>
+        /// Can either be standard system deserialization of newtonsoft deserialization.
+        /// </summary>
+        public ResponseDeserialization? RequestDeserialization { get; set; }
     }
 }
