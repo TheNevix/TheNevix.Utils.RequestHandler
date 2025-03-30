@@ -1,21 +1,24 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
+using TheNevix.Utils.RequestHandler.Internal;
 using TheNevix.Utils.RequestHandler.Models;
 
 namespace TheNevix.Utils.RequestHandler
 {
-    public class RequestBuilder : IRequestBuilder
+    internal class RequestBuilder : IRequestBuilder
     {
         private readonly RequestHandler _requestHandler;
         private readonly HttpRequestMessage _requestMessage;
         
         RequestOptions options = null;
+        HttpMethod _method = null;
 
-        public RequestBuilder(RequestHandler requestHandler, string url)
+        public RequestBuilder(RequestHandler requestHandler, HttpMethod method, string url)
         {
+            _method = method;
             _requestHandler = requestHandler;
-            _requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+            _requestMessage = new HttpRequestMessage(_method, RequestHelpers.EnsureTrailingQuestionMark(url));
         }
 
         /// <summary>
@@ -30,6 +33,23 @@ namespace TheNevix.Utils.RequestHandler
             return this;
         }
 
+        /// <summary>
+        /// Test 2
+        /// </summary>
+        /// <param name="name">The name of the header.</param>
+        /// <param name="value">The value of the header.</param>
+        /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
+        public IRequestBuilder AddQueryParameter(string name, string value, bool checkIfNull = true)
+        {
+            if (checkIfNull && value is not null)
+            {
+                var uriBuilder = new UriBuilder(_requestMessage.RequestUri);
+                uriBuilder.Query += $"{name}={value}&";
+                _requestMessage.RequestUri = uriBuilder.Uri;
+            }
+
+            return this;
+        }
 
         /// <summary>
         /// Adds a request body to the HTTP request as StringContent.
@@ -51,18 +71,6 @@ namespace TheNevix.Utils.RequestHandler
         public IRequestBuilder WithRequestBody(IEnumerable<KeyValuePair<string, string>> model)
         {
             _requestMessage.Content = new FormUrlEncodedContent(model);
-            return this;
-        }
-
-
-        /// <summary>
-        /// Sets the HTTP method (GET, POST, etc.) for the request.
-        /// </summary>
-        /// <param name="method">The HTTP method to use.</param>
-        /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
-        public IRequestBuilder WithMethod(HttpMethod method)
-        {
-            _requestMessage.Method = method;
             return this;
         }
 

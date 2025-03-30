@@ -12,7 +12,6 @@ namespace TheNevix.Utils.RequestHandler.Configurations
         public static IServiceCollection AddRequestHandlerServices(this IServiceCollection services)
         {
             services.AddHttpClient<IRequestHandler, RequestHandler>();
-            services.AddHttpClient<IRequestBuilder, RequestBuilder>();
             return services;
         }
     }
