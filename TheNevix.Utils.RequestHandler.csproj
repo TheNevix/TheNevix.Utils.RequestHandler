@@ -5,20 +5,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Title>TheNevix.Utils.RequestHandler</Title>
     <Authors>TheNevix</Authors>
     <Company>TheNevix</Company>
     <PackageTags>Apicall; apicalls; networkrequests; apicallsmanager; apicallclient</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-	<Description>A simple and flexible NuGet package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, error handling and more. Compatible with .NET 6.0 to .NET 8.0.</Description>
+	<Description>A simple and flexible NuGet-package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, error handling and more. Compatible with .NET 6.0 to .NET 8.0.</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
   <IncludeXmlDocumentation>true</IncludeXmlDocumentation>
-  <PackageIcon>Logo.png</PackageIcon>
+  <PackageIcon>Logo.jpeg</PackageIcon>
   <RepositoryUrl>https://github.com/TheNevix/TheNevix.Utils.RequestHandler</RepositoryUrl>
   <RepositoryType>git</RepositoryType>
 	  <DebugType>none</DebugType>
@@ -55,7 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Logo.png">
+    <None Include="$(MSBuildThisFileDirectory)Logo.jpeg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

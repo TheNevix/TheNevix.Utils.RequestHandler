@@ -34,10 +34,10 @@ namespace TheNevix.Utils.RequestHandler
         }
 
         /// <summary>
-        /// Test 2
+        /// Adds a query parameter to the HTTP request.
         /// </summary>
-        /// <param name="name">The name of the header.</param>
-        /// <param name="value">The value of the header.</param>
+        /// <param name="name">The name of the query parameter.</param>
+        /// <param name="value">The value of the query parameter.</param>
         /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
         public IRequestBuilder AddQueryParameter(string name, string value, bool checkIfNull = true)
         {
@@ -75,9 +75,9 @@ namespace TheNevix.Utils.RequestHandler
         }
 
         /// <summary>
-        /// Sets RequestOptions with provided options
+        /// Sets RequestOptions with provided options.
         /// </summary>
-        /// <param name="requestOptions">THe options for the request</param>
+        /// <param name="requestOptions">The options for the request.</param>
         /// <returns>The current instance of <see cref="IRequestBuilder"/> for method chaining.</returns>
         public IRequestBuilder WithOptions(RequestOptions requestOptions)
         {

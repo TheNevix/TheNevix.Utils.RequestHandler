@@ -1,13 +1,13 @@
 ﻿namespace TheNevix.Utils.RequestHandler
 {
     /// <summary>
-    /// Base response model interface to use when doing ExecuteWithHandlingAsync()
+    /// Base response model interface to use when doing the ExecuteWithHandlingAsync method
     /// </summary>
     /// <typeparam name="T">The type of the data within the response model.</typeparam>
     public interface IResponseModel<T>
     {
         /// <summary>
-        /// A boolean to indicate if any exceptions occured.
+        /// A boolean to indicate if the request was successful.
         /// </summary>
         bool IsSuccess { get; set; }
 
@@ -17,7 +17,7 @@
         string? Message { get; set; }
 
         /// <summary>
-        /// Holds the statuscode of the request
+        /// Holds the statuscode of the request.
         /// </summary>
         int StatusCode { get; set; }
 

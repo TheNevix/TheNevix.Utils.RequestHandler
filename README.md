@@ -2,7 +2,10 @@
 
 ![NuGet](https://img.shields.io/nuget/v/TheNevix.Utils.RequestHandler) ![NuGet Downloads](https://img.shields.io/nuget/dt/TheNevix.Utils.RequestHandler)
 
-A simple and flexible HTTP request handler utility for .NET applications. This library simplifies making API calls by providing an easy-to-use interface for sending HTTP requests.
+A simple and flexible NuGet-package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, error handling and more. Compatible with .NET 6.0 to .NET 8.0.
+
+### Note
+This documentation has been updated since version 1.2.1 and is only relevant since version 1.2.0. Before that version, syntax might slightly differ.
 
 ## Features
 
@@ -46,9 +49,8 @@ public class SomeService
 
     public async Task DoSomethingAsync(string url)
     {
-        var response = await requestHandler
-            .CreateRequest("https://www.freetogame.com/api/games?platform=pc")
-            .WithMethod(HttpMethod.Get)
+        var response = await _requestHandler
+            .GetRequest("https://www.freetogame.com/api/games")
             .ExecuteAsync();
 
         response.EnsureSuccessStatusCode();
@@ -68,6 +70,14 @@ class SimpleExecuteAsync
 
 In this example, you receive an HttpResponseMessage object. You can then check the status code, deserialize the response body, and handle the data accordingly.
 
+The possible HTTP methods are:
+
+- GetRequest
+- PostRequest
+- PutRequest
+- PatchRequest
+- DeleteRequest
+
 ### HTTP request with ExecuteAsync&lt;TResponse&gt;() 
 
 This example demonstrates how to send an HTTP request and let the library convert the JSON response into a provided response model.
@@ -85,8 +95,7 @@ public class SomeService
     public async Task DoSomethingAsync(string url)
     {
         var response = await requestHandler
-            .CreateRequest("https://www.freetogame.com/api/games?platform=pc")
-            .WithMethod(HttpMethod.Get)
+            .GetRequest("https://www.freetogame.com/api/games")
             .ExecuteAsync<List<ExecuteAsyncWithResponseModel>>();
     }
 }
@@ -118,8 +127,7 @@ public class SomeService
     public async Task DoSomethingAsync(string url)
     {
         var response = await requestHandler
-            .CreateRequest("https://www.freetogame.com/api/games?platform=pc")
-            .WithMethod(HttpMethod.Get)
+            .GetRequest("https://www.freetogame.com/api/games")
             .ExecuteWithHandlingAsync<ResponseModel, List<GamesData>>();
 
         if (!response.IsSuccess)

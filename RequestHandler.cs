@@ -8,7 +8,7 @@
         {
             _httpClient = httpClient;
         }
-
+        
         public IRequestBuilder GetRequest(string url)
         {
             return new RequestBuilder(this, HttpMethod.Get, url);

@@ -1,7 +1,7 @@
 ﻿namespace TheNevix.Utils.RequestHandler.Models.Enums
 {
     /// <summary>
-    /// Enum with possible deserialization options
+    /// Possible deserialization options.
     /// </summary>
     public enum ResponseDeserialization
     {
