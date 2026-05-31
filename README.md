@@ -2,16 +2,16 @@
 
 ![NuGet](https://img.shields.io/nuget/v/TheNevix.Utils.RequestHandler) ![NuGet Downloads](https://img.shields.io/nuget/dt/TheNevix.Utils.RequestHandler)
 
-A simple and flexible NuGet-package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, error handling and more. Compatible with .NET 6.0 to .NET 8.0.
+A simple and flexible NuGet-package for easily managing HTTP requests in your .NET projects. Provides features for making GET, POST, and other HTTP requests with support for custom headers, response validation, error handling and more. Compatible with .NET 6.0 to .NET 10.0.
 
 ### Note
-This documentation has been updated since version 1.2.1 and is only relevant since version 1.2.0. Before that version, syntax might slightly differ.
+This documentation has been updated since version 1.3.0. Before version 1.2.0, syntax might slightly differ.
 
 ## Features
 
 - Simplified API for making HTTP requests
 - Built-in error handling and response validation
-- Supports .NET 6.0, 7.0, and 8.0
+- Supports .NET 6.0, 7.0, 8.0, 9.0, and 10.0
 
 ## Installation
 
